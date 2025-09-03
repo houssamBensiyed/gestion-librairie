@@ -132,3 +132,74 @@ void afficherTousLesLivres() {
     printf("--------------------------------------------------------------------------------\n");
     printf("Total : %d livre(s) different(s) en stock\n", nombre_livres);
 }
+
+// Fonction pour rechercher un livre par son title
+void rechercherLivre() {
+    char titre_recherche[MAX_TITRE];
+    int trouve = 0;
+
+    if (nombre_livres == 0) {
+        printf("\nAucun livre en stock. \n");
+        return;
+    }
+
+    printf("\n==================== RECHERCHER UN LIVRE =============\n");
+    printf("Entrez le titre du livre a rechercher: ");
+    fgets(titre_recherche, MAX_TITRE, stdin);
+    titre_recherche[strcspn(titre_recherche, "\n")] = 0;
+
+    for (int i = 0; i < nombre_livres; i++) {
+        if (strcasecmp(titres[i], titre_recherche) == 0) {
+            printf("\nLivre trouve: \n");
+            printf("================\n");
+            printf("Titre    : %s\n", titres[i]);
+            printf("Auteur   : %s\n", auteurs[i]);
+            printf("Prix     : %.2f\n", prix[i]);
+            printf("Quantite : %d\n", quantites[i]);
+            trouve = 1;
+            break;
+        }
+    }
+
+    if (!trouve) {
+        printf("\nLivre non trouve dans le stock.\n");
+    }
+}
+
+void mettreAJourQuantite() {
+    char titre_recherche[MAX_TITRE];
+    int nouvell_quantite;
+    int trouve = 0;
+
+    if (nombre_livres == 0) {
+        printf("\nAucun livre en stock.\n");
+        return;
+    }
+
+    printf("\n========== METTRE A JOUR LA QUANTITE ==========\n");
+    printf("Entrez le titre du livre: ");
+    fgets(titre_recherche, MAX_TITRE, stdin);
+    titre_recherche[strcspn(titre_recherche, "\n")] = 0;
+
+    for (int i = 0; i < nombre_livres; i++) {
+        if (strcasecmp(titres[i], titre_recherche) == 0) {
+            printf("Quantite actuelle : %d\n", quantites[i]);
+            printf("Nouvell quantite: ");
+            scanf("%d", &nouvell_quantite);
+            viderBuffer();
+
+            
+            quantites[i] = nouvell_quantite;
+            printf("\nQuantite mise a jour avec succes!\n");
+            trouve = 1;
+            break;
+        }
+    }
+
+
+
+    if (!trouve) {
+        printf("\nLivre non trouve dans le stock. \n");
+    }
+}
+
