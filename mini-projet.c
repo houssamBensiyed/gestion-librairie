@@ -203,3 +203,25 @@ void mettreAJourQuantite() {
     }
 }
 
+// Fonction pour afficher le nombre total de livres en stock
+void afficherTotalStock() {
+    int total = 0;
+
+    if (nombre_livres == 0) {
+        printf("\nAucun livre en stock.\n");
+        return;
+    }
+
+    printf("\n=========== TOTAL DU STOCK ============\n");
+
+    for (int i = 0; i < nombre_livres; i++) {
+        total += quantites[i];
+        printf("%s: %d exemplaire(s)\n", titres[i], quantites[i]);
+    }
+
+
+    printf("\n----------------------------------------\n");
+    printf("Nombre de titres differents: %d\n", nombre_livres);
+    printf("Nombre total d'exemplaires: %d\n", total);
+    printf("-------------------------------------------\n");
+ }
