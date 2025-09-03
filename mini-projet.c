@@ -69,7 +69,7 @@ int main() {
 
 // Fonction pour afficher le menu principal
 void afficherMenu() {
-    printf("\n========== MENU PRINCIPAL ==========\n");
+    printf("\n========== MENU PRINCIPAL =================\n");
     printf("1. Ajouter un livre\n");
     printf("2. Afficher tous les livres\n");
     printf("3. Rechercher un livre\n");
@@ -77,7 +77,8 @@ void afficherMenu() {
     printf("5. Supprimer un livre\n");
     printf("6. Afficher le total du stock\n");
     printf("0. Quitter\n");
-    printf("====================================\n");
+    printf("                © copyright houssam bensiyed \n");
+    printf("=============================================\n");
 }
 
 // Fonction pour vider le buffer d'entrée
