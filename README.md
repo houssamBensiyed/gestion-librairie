@@ -2,21 +2,6 @@
 
 Un système de gestion de stock simple et efficace pour une librairie, développé en langage C.
 
-## 📋 Table des Matières
-
-- [Description](#description)
-- [Fonctionnalités](#fonctionnalités)
-- [Prérequis](#prérequis)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Structure du Projet](#structure-du-projet)
-- [Détails Techniques](#détails-techniques)
-- [Exemples d'Utilisation](#exemples-dutilisation)
-- [Limitations](#limitations)
-- [Améliorations Futures](#améliorations-futures)
-- [Auteur](#auteur)
-- [Licence](#licence)
-
 ## 📖 Description
 
 Ce programme permet de gérer efficacement le stock de livres dans une librairie. Il offre une interface en ligne de commande simple et intuitive pour effectuer toutes les opérations de base nécessaires à la gestion d'inventaire.
@@ -167,6 +152,45 @@ Prix     : 18.50
 Quantite : 12
 ```
 
+#### 4️⃣ Mettre à Jour la Quantité
+
+```
+========== METTRE A JOUR LA QUANTITE ==========
+Entrez le titre du livre : Le Petit Prince
+Quantite actuelle : 25
+Nouvelle quantite : 30
+
+Quantite mise a jour avec succes!
+```
+
+#### 5️⃣ Supprimer un Livre
+
+```
+========== SUPPRIMER UN LIVRE ==========
+Entrez le titre du livre a supprimer : L'Étranger
+
+Livre trouve :
+Titre : L'Étranger
+Auteur : Albert Camus
+
+Confirmer la suppression (o/n) : o
+
+Livre supprime avec succes!
+```
+
+#### 6️⃣ Afficher le Total du Stock
+
+```
+========== TOTAL DU STOCK ==========
+Le Petit Prince : 30 exemplaire(s)
+1984 : 12 exemplaire(s)
+
+--------------------------------
+Nombre de titres differents : 2
+Nombre total d'exemplaires : 42
+--------------------------------
+```
+
 ## 🏗️ Structure du Projet
 
 ```
@@ -285,15 +309,14 @@ chcp 65001
 locale
 ```
 
-## 👤 Auteur
+**Problème : Erreur de segmentation**
+```bash
+# Compiler avec les symboles de débogage
+gcc -g -o gestion_librairie gestion_librairie.c
 
-**Votre Nom**
-- GitHub: [@votre-username](https://github.com/votre-username)
-- Email: votre.email@example.com
-
-## 📄 Licence
-
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+# Utiliser gdb pour déboguer
+gdb ./gestion_librairie
+```
 
 ## 🤝 Contribution
 
@@ -305,10 +328,57 @@ Les contributions sont les bienvenues ! Pour contribuer :
 4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
 
+### Conventions de Code
+
+- Indentation : 4 espaces
+- Noms de fonctions : camelCase
+- Noms de variables : snake_case
+- Commentaires en français
+- Maximum 80 caractères par ligne
+
+## 📊 Tests
+
+### Tests Unitaires Recommandés
+
+```c
+// Test d'ajout de livre
+void test_ajout_livre() {
+    // Ajouter un livre
+    // Vérifier que nombre_livres a augmenté
+    // Vérifier que les données sont correctes
+}
+
+// Test de suppression
+void test_suppression_livre() {
+    // Ajouter plusieurs livres
+    // Supprimer un livre
+    // Vérifier que nombre_livres a diminué
+    // Vérifier que le livre n'existe plus
+}
+```
+
+## 👤 Auteur
+
+**Votre Nom**
+- GitHub: [@houssamBensiyed](https://github.com/HoussamBensiyed)
+- Email: houssam.benssiyed123@gmail.com
+
+## 📄 Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+```
+MIT License
+
+Copyright (c) 2025 [Houssam Bensiyed]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+```
+
 ## 📞 Support
 
-Pour toute question ou problème, veuillez ouvrir une [issue](https://github.com/votre-username/gestion-librairie/issues).
-
----
+Pour toute question ou problème, veuillez ouvrir une [issue](https://github.com/houssamBensiyed/gestion-librairie/issues).
 
 ⭐ **N'oubliez pas de mettre une étoile si ce projet vous a été utile !** ⭐
