@@ -204,6 +204,54 @@ void mettreAJourQuantite() {
     }
 }
 
+// Fonction pour supprimer un livre du stock
+void supprimerLivre() {
+    char titre_recherche[MAX_TITRE];
+    int trouve = 0;
+    char confirmation;
+    
+    if (nombre_livres == 0) {
+        printf("\nAucun livre en stock.\n");
+        return;
+    }
+    
+    printf("\n========== SUPPRIMER UN LIVRE ==========\n");
+    printf("Entrez le titre du livre a supprimer : ");
+    fgets(titre_recherche, MAX_TITRE, stdin);
+    titre_recherche[strcspn(titre_recherche, "\n")] = 0;
+    
+    for (int i = 0; i < nombre_livres; i++) {
+        if (strcasecmp(titres[i], titre_recherche) == 0) {
+            printf("\nLivre trouve :\n");
+            printf("Titre : %s\n", titres[i]);
+            printf("Auteur : %s\n", auteurs[i]);
+            printf("\nConfirmer la suppression (o/n) : ");
+            scanf("%c", &confirmation);
+            viderBuffer();
+            
+            if (confirmation == 'o' || confirmation == 'O') {
+                // Décaler les éléments pour supprimer le livre
+                for (int j = i; j < nombre_livres - 1; j++) {
+                    strcpy(titres[j], titres[j + 1]);
+                    strcpy(auteurs[j], auteurs[j + 1]);
+                    prix[j] = prix[j + 1];
+                    quantites[j] = quantites[j + 1];
+                }
+                nombre_livres--;
+                printf("\nLivre supprime avec succes!\n");
+            } else {
+                printf("\nSuppression annulee.\n");
+            }
+            trouve = 1;
+            break;
+        }
+    }
+    
+    if (!trouve) {
+        printf("\nLivre non trouve dans le stock.\n");
+    }
+}
+
 // Fonction pour afficher le nombre total de livres en stock
 void afficherTotalStock() {
     int total = 0;
