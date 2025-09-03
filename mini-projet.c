@@ -10,7 +10,7 @@
 char titres[MAX_LIVRES][MAX_TITRE];
 char auteurs[MAX_LIVRES][MAX_AUTEUR];
 float prix[MAX_LIVRES];
-int quantities[MAX_LIVRES];
+int quantites[MAX_LIVRES];
 int nombre_livres = 0;
 
 // Prototypes des fonctions
@@ -65,4 +65,70 @@ int main() {
     } while(choix != 0);
     
     return 0;
+}
+
+// Fonction pour afficher le menu principal
+void afficherMenu() {
+    printf("\n========== MENU PRINCIPAL ==========\n");
+    printf("1. Ajouter un livre\n");
+    printf("2. Afficher tous les livres\n");
+    printf("3. Rechercher un livre\n");
+    printf("4. Mettre a jour la quantite\n");
+    printf("5. Supprimer un livre\n");
+    printf("6. Afficher le total du stock\n");
+    printf("0. Quitter\n");
+    printf("====================================\n");
+}
+
+// Fonction pour vider le buffer d'entrée
+void viderBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+// Fonction pour ajouter un livre au stock
+void ajouterLivre() {
+    if (nombre_livres >= MAX_LIVRES) {
+        printf("\nErreur : Stock maximum atteint!\n");
+        return;
+    }
+    
+    printf("\n========== AJOUTER UN LIVRE ==========\n");
+    
+    printf("Titre du livre : ");
+    fgets(titres[nombre_livres], MAX_TITRE, stdin);
+    titres[nombre_livres][strcspn(titres[nombre_livres], "\n")] = 0;
+    
+    printf("Auteur du livre : ");
+    fgets(auteurs[nombre_livres], MAX_AUTEUR, stdin);
+    auteurs[nombre_livres][strcspn(auteurs[nombre_livres], "\n")] = 0;
+    
+    printf("Prix du livre : ");
+    scanf("%f", &prix[nombre_livres]);
+    
+    printf("Quantite en stock : ");
+    scanf("%d", &quantites[nombre_livres]);
+    viderBuffer();
+    
+    nombre_livres++;
+    printf("\nLivre ajoute avec succes!\n");
+}
+
+// Fonction pour afficher tous les livres disponibles
+void afficherTousLesLivres() {
+    if (nombre_livres == 0) {
+        printf("\nAucun livre en stock.\n");
+        return;
+    }
+    
+    printf("\n========== LISTE DES LIVRES ==========\n");
+    printf("%-30s %-25s %-10s %-10s\n", "TITRE", "AUTEUR", "PRIX", "QUANTITE");
+    printf("--------------------------------------------------------------------------------\n");
+    
+    for (int i = 0; i < nombre_livres; i++) {
+        printf("%-30s %-25s %-10.2f %-10d\n", 
+               titres[i], auteurs[i], prix[i], quantites[i]);
+    }
+    printf("--------------------------------------------------------------------------------\n");
+    printf("Total : %d livre(s) different(s) en stock\n", nombre_livres);
 }
